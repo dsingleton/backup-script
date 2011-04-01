@@ -1,0 +1,5 @@
+A very simple bash script to create a small (less than 100mb), encrypted back of my most essential files.
+
+Designed for pushing to dropbox or putting on an SD card.
+
+So far entirely built for my purposes only, may make it more generally useful later.
