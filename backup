@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# A bit hacky, but it works
+mkdir /tmp/backup
+cd /tmp/backup
+
+# Make outlines of media, at least i'll now what to replace
+find ~/Music/ > /tmp/backup/music.log
+find ~/Movies/ > /tmp/backup/movies.log
+find ~/Pictures/ > /tmp/backup/pictures.log
+
+# Copy essentials, code & docs (plaintext/pdf)
+# @todo: use rysnc and filter out large files automatically
+cp -r ~/Code .
+cp -r ~/Documents .
+
+# Compress and encrypt
+# @todo: use asymetric cypto once my keys are more organised
+tar -cp . | gpg -c -o "$1$(date "+%Y-%m-%d").tar.gpg" 
+
+# Cleanup
+rm -rf /tmp/backup
+cd -
